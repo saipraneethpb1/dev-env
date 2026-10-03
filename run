@@ -1,45 +1,63 @@
 #!/usr/bin/env bash
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 filter=""
 dry="0"
 
-while [[ $# > 0 ]]; do
-    if [[ $1 == "--dry" ]]; then
-        dry="1"
-    else
-        filter="$1"
-    fi
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --dry)
+            dry="1"
+            ;;
+        *)
+            if [[ -n "$filter" ]]; then
+                echo "run: only one filter is supported" >&2
+                exit 1
+            fi
+            filter="$1"
+            ;;
+    esac
     shift
 done
 
 log() {
-    if [[ $dry == "1" ]]; then
-        echo "[DRY_RUN]: $@"
+    if [[ "$dry" == "1" ]]; then
+        echo "[DRY_RUN]: $*"
     else
-        echo "$@"
+        echo "$*"
     fi
 }
 
 execute() {
-    log "execute $@"
-    if [[ $dry == "1" ]]; then
-        return
+    log "execute $*"
+
+    if [[ "$dry" == "1" ]]; then
+        return 0
     fi
+
     "$@"
 }
 
+cd "$script_dir"
 
-log "$script_dir -- $filter"
+log "$script_dir -- ${filter:-all}"
 
-cd $script_dir
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f)
+while IFS= read -r -d '' script; do
+    name="$(basename "$script")"
 
-for script in $scripts; do
-    if echo "$script" | grep -qv "$filter"; then
+    if [[ -n "$filter" && "$name" != *"$filter"* ]]; then
         log "filtering $script"
         continue
     fi
 
-    execute ./$script
-done
+    execute "$script"
+done < <(
+    find "$script_dir/runs" \
+        -maxdepth 1 \
+        -mindepth 1 \
+        -type f \
+        -executable \
+        -print0
+)
