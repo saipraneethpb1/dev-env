@@ -1,0 +1,35 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    display-drun: "Apps";
+    font: "JetBrainsMono Nerd Font 13";
+}
+
+* {
+    background: #141414ee;
+    foreground: #eeeeee;
+    selected-background: #303030;
+    selected-foreground: #ffffff;
+}
+
+window {
+    width: 40%;
+    border: 2px;
+    border-color: #555555;
+    border-radius: 10px;
+}
+
+listview {
+    lines: 8;
+    spacing: 6px;
+}
+
+element {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+element selected {
+    background-color: @selected-background;
+    text-color: @selected-foreground;
+}

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+sudo pacman -S --needed --noconfirm \
+    hyprland \
+    waybar \
+    rofi \
+    mako \
+    hyprpaper \
+    hyprlock \
+    hypridle \
+    grim \
+    slurp \
+    wl-clipboard \
+    brightnessctl \
+    playerctl \
+    swayosd
