@@ -181,6 +181,12 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 
 -- =========================================================
+-- LOCK SCREEN
+-- =========================================================
+
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+
+-- =========================================================
 -- AUTOSTART
 -- =========================================================
 
