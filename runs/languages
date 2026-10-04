@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+sudo pacman -S --needed --noconfirm \
+    lua-language-server \
+    typescript-language-server \
+    typescript \
+    gopls \
+    rust-analyzer \
+    clang \
+    pyright \
+    ruff \
+    stylua \
+    prettier

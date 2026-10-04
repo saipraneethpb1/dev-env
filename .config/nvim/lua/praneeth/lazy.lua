@@ -41,6 +41,82 @@ require("lazy").setup({
     },
 
     {
+        "saghen/blink.cmp",
+        dependencies = {
+            "saghen/blink.lib",
+            "rafamadriz/friendly-snippets",
+        },
+        build = function()
+            require("blink.cmp").build():pwait()
+        end,
+        opts = {
+            keymap = {
+                preset = "default",
+            },
+
+            completion = {
+                documentation = {
+                    auto_show = true,
+                },
+            },
+
+            sources = {
+                default = {
+                    "lsp",
+                    "path",
+                    "snippets",
+                    "buffer",
+                },
+            },
+
+            fuzzy = {
+                implementation = "prefer_rust_with_warning",
+            },
+        },
+    },
+    
+    {
+        "neovim/nvim-lspconfig",
+    },
+    
+    {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "ruff_format" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescriptreact = { "prettier" },
+                json = { "prettier" },
+                html = { "prettier" },
+                css = { "prettier" },
+                go = { "gofmt" },
+                rust = { "rustfmt" },
+                c = { "clang_format" },
+                cpp = { "clang_format" },
+            },
+
+            format_on_save = {
+                timeout_ms = 1000,
+                lsp_format = "fallback",
+            },
+        },
+
+        config = function(_, opts)
+            require("conform").setup(opts)
+
+            vim.keymap.set({ "n", "v" }, "<leader>f", function()
+                require("conform").format({
+                    async = true,
+                    lsp_format = "fallback",
+                })
+            end)
+        end,
+    },
+
+    {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = {
