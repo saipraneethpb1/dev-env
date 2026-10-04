@@ -3,14 +3,24 @@
 set -euo pipefail
 
 sudo pacman -S --needed --noconfirm \
+    python \
+    nodejs \
+    npm \
+    go \
+    rustup \
+    clang \
+    lua \
     lua-language-server \
-    typescript-language-server \
     typescript \
+    typescript-language-server \
     gopls \
     rust-analyzer \
-    clang \
     pyright \
     ruff \
     stylua \
     prettier \
     tree-sitter-cli
+
+if ! rustup show active-toolchain >/dev/null 2>&1; then
+    rustup default stable
+fi

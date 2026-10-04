@@ -5,3 +5,7 @@ set -euo pipefail
 sudo pacman -S --needed --noconfirm \
     zsh \
     zsh-completions
+
+if [[ "$SHELL" != "$(command -v zsh)" ]]; then
+    chsh -s "$(command -v zsh)"
+fi

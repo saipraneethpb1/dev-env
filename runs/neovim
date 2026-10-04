@@ -1,8 +1,31 @@
 #!/usr/bin/env bash
 
-git clone -b v0.12.5 https://github.com/neovim/neovim.git $HOME/personal/neovim
-#sudo apt install cmake gettext lua5.1 liblua5.1-0-dev
+set -euo pipefail
 
-cd $HOME/personal/neovim
+NEOVIM_DIR="$HOME/personal/neovim"
+NEOVIM_VERSION="v0.12.5"
+
+sudo pacman -S --needed --noconfirm \
+    base-devel \
+    cmake \
+    ninja \
+    gettext \
+    curl
+
+mkdir -p "$HOME/personal"
+
+if [[ ! -d "$NEOVIM_DIR/.git" ]]; then
+    git clone \
+        --branch "$NEOVIM_VERSION" \
+        --depth 1 \
+        https://github.com/neovim/neovim.git \
+        "$NEOVIM_DIR"
+else
+    git -C "$NEOVIM_DIR" fetch origin "$NEOVIM_VERSION" --depth 1
+    git -C "$NEOVIM_DIR" checkout "$NEOVIM_VERSION"
+fi
+
+cd "$NEOVIM_DIR"
+
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install

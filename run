@@ -44,20 +44,29 @@ cd "$script_dir"
 
 log "$script_dir -- ${filter:-all}"
 
-while IFS= read -r -d '' script; do
-    name="$(basename "$script")"
+scripts=(
+    base
+    dev
+    zsh
+    tmux
+    languages
+    neovim
+    ghostty
+    hyprland
+)
+
+for name in "${scripts[@]}"; do
+    script="$script_dir/runs/$name"
 
     if [[ -n "$filter" && "$name" != *"$filter"* ]]; then
         log "filtering $script"
         continue
     fi
 
+    [[ -x "$script" ]] || {
+        log "skipping non-executable $script"
+        continue
+    }
+
     execute "$script"
-done < <(
-    find "$script_dir/runs" \
-        -maxdepth 1 \
-        -mindepth 1 \
-        -type f \
-        -executable \
-        -print0
-)
+done

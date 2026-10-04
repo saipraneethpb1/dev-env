@@ -10,9 +10,13 @@ sudo pacman -S --needed --noconfirm \
     hyprpaper \
     hyprlock \
     hypridle \
+    swayosd \
     grim \
     slurp \
     wl-clipboard \
     brightnessctl \
     playerctl \
-    swayosd
+    pipewire \
+    pipewire-audio \
+    pipewire-pulse \
+    wireplumber

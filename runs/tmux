@@ -2,7 +2,4 @@
 
 set -euo pipefail
 
-sudo pacman -S --needed --noconfirm \
-    tmux \
-    fzf \
-    wl-clipboard
+sudo pacman -S --needed --noconfirm tmux

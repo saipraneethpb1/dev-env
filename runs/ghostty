@@ -2,4 +2,6 @@
 
 set -euo pipefail
 
-sudo pacman -S --needed --noconfirm ghostty
+sudo pacman -S --needed --noconfirm \
+    ghostty \
+    ttf-jetbrains-mono-nerd
