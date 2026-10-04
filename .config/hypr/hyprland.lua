@@ -101,6 +101,20 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- Fullscreen
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
+-- Toggle floating
+hl.bind(
+	mainMod .. " + V",
+	hl.dsp.window.float({
+		action = "toggle",
+	})
+)
+
+-- Move active window
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+
 -- =========================================================
 -- FOCUS MOVEMENT
 -- =========================================================
@@ -184,7 +198,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 -- LOCK SCREEN
 -- =========================================================
 
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- =========================================================
 -- AUTOSTART
