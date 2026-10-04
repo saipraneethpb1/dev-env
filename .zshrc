@@ -1,3 +1,13 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(
+    git
+)
+
+source "$ZSH/oh-my-zsh.sh"
+
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -8,9 +18,6 @@ SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 setopt AUTO_CD
-
-autoload -Uz compinit
-compinit
 
 eval "$(zoxide init zsh)"
 
