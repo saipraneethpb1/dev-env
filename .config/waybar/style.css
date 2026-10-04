@@ -1,26 +1,113 @@
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 13px;
+  font-size: 11px;
+  min-height: 0;
 }
 
 window#waybar {
-  background: rgba(20, 20, 20, 0.9);
-  color: #ffffff;
+  background: transparent;
+  color: #cdd6f4;
+}
+
+/* ---------------------------------------------------------
+   SHARED MODULE BOXES
+   --------------------------------------------------------- */
+
+#workspaces,
+#clock,
+#pulseaudio,
+#battery,
+#network,
+#cpu,
+#memory,
+#custom-lock {
+  background: #101117;
+  border: 1px solid #31344a;
+  border-radius: 2px;
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  padding: 0 7px;
+}
+
+/* ---------------------------------------------------------
+   WORKSPACES
+   --------------------------------------------------------- */
+
+#workspaces {
+  padding: 0 3px;
 }
 
 #workspaces button {
-  padding: 0 8px;
-  color: #aaaaaa;
   background: transparent;
+  color: #7f849c;
+
+  border: none;
+  border-radius: 0;
+
+  padding: 0 4px;
+  margin: 0;
 }
 
 #workspaces button.active {
+  color: #cdd6f4;
+}
+
+#workspaces button:hover {
+  background: transparent;
   color: #ffffff;
 }
 
-#clock,
-#network,
-#pulseaudio,
-#battery {
+/* ---------------------------------------------------------
+   CLOCK
+   --------------------------------------------------------- */
+
+#clock {
+  color: #a6adc8;
   padding: 0 10px;
+}
+
+/* ---------------------------------------------------------
+   RIGHT MODULE GROUP
+   --------------------------------------------------------- */
+
+#pulseaudio {
+  color: #f2cdcd;
+  border-right: none;
+  border-radius: 2px 0 0 2px;
+}
+
+#battery {
+  color: #a6e3a1;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+#network {
+  color: #bac2de;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+#cpu {
+  color: #89b4fa;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+#memory {
+  color: #cba6f7;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+#custom-lock {
+  color: #cdd6f4;
+  border-left: none;
+  border-radius: 0 2px 2px 0;
 }

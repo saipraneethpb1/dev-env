@@ -117,6 +117,20 @@ require("lazy").setup({
 	},
 
 	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		priority = 1000,
+		config = function()
+			require("rose-pine").setup({
+				variant = "main",
+				dark_variant = "main",
+			})
+
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
+
+	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = {

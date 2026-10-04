@@ -1,56 +1,85 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 30,
+    "layer": "top",
+    "position": "top",
+    "height": 26,
 
-  "modules-left": [
-    "hyprland/workspaces"
-  ],
+    "spacing": 0,
 
-  "modules-center": [
-    "clock"
-  ],
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
 
-  "modules-right": [
-    "network",
-    "pulseaudio",
-    "battery"
-  ],
+    "modules-center": [
+        "clock"
+    ],
 
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true
-  },
+    "modules-right": [
+        "pulseaudio",
+        "battery",
+        "network",
+        "cpu",
+        "memory",
+        "custom/lock"
+    ],
 
-  "clock": {
-    "format": "{:%a %d %b  %H:%M}"
-  },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
 
-  "network": {
-    "format-wifi": "󰤨  {essid}",
-    "format-ethernet": "󰈀  {ipaddr}",
-    "format-disconnected": "󰤭"
-  },
+        "format": "{name}: {icon}",
 
-  "pulseaudio": {
-    "format": "󰕾  {volume}%",
-    "format-muted": "󰝟  muted"
-  },
+        "format-icons": {
+            "active": "",
+            "default": "●"
+        }
+    },
 
-  "battery": {
-    "format": "{capacity}% {icon}",
-    "format-charging": "󰂄 {capacity}%",
-    "format-icons": [
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ]
-  }
+    "clock": {
+        "format": "{:%d - %H:%M}",
+        "tooltip-format": "{:%A, %d %B %Y}"
+    },
+
+    "pulseaudio": {
+        "format": "  {volume}%",
+        "format-muted": "󰝟  mute",
+        "scroll-step": 5
+    },
+
+    "battery": {
+        "format": "{capacity}%  {icon}",
+        "format-charging": "{capacity}%  󰂄",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+
+    "network": {
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "tooltip-format-wifi": "{essid}  {signalStrength}%"
+    },
+
+    "cpu": {
+        "format": "  {usage}%"
+    },
+
+    "memory": {
+        "format": "  {used:0.1f}G/{total:0.1f}G"
+    },
+
+    "custom/lock": {
+        "format": "",
+        "on-click": "hyprlock",
+        "tooltip": false
+    }
 }

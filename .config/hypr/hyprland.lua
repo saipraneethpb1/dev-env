@@ -39,20 +39,29 @@ hl.config({
 		gaps_out = 10,
 		border_size = 2,
 		layout = "dwindle",
+
+		col = {
+			active_border = "rgb(26c6ca)",
+			inactive_border = "rgb(2a2a2a)",
+		},
 	},
 
 	decoration = {
 		rounding = 8,
 
 		blur = {
-			enabled = true,
-			size = 8,
-			passes = 1,
+			enabled = false,
+			-- size = 8,
+			-- passes = 1,
+		},
+
+		shadow = {
+			enabled = false,
 		},
 	},
 
 	animations = {
-		enabled = true,
+		enabled = false,
 	},
 
 	input = {
