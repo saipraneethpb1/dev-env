@@ -19,4 +19,7 @@ sudo pacman -S --needed --noconfirm \
     pipewire \
     pipewire-audio \
     pipewire-pulse \
-    wireplumber
+    wireplumber \
+    xdg-desktop-portal-hyprland \
+    xdg-desktop-portal-gtk \
+    hyprpolkitagent
