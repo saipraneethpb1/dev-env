@@ -1,35 +1,123 @@
 configuration {
     modi: "drun,run";
     show-icons: true;
-    display-drun: "Apps";
-    font: "JetBrainsMono Nerd Font 13";
+    font: "JetBrainsMono Nerd Font 11";
 }
 
 * {
-    background: #141414ee;
-    foreground: #eeeeee;
-    selected-background: #303030;
+    background: #111111;
+    background-alt: #1a1a1a;
+
+    foreground: #d8d8d8;
+    foreground-muted: #777777;
+
+    selected-background: #333333;
     selected-foreground: #ffffff;
+
+    border-color: #333333;
 }
 
 window {
-    width: 40%;
-    border: 2px;
-    border-color: #555555;
-    border-radius: 10px;
+    width: 560px;
+
+    location: center;
+    anchor: center;
+
+    background-color: @background;
+
+    border: 1px;
+    border-color: @border-color;
+    border-radius: 8px;
+}
+
+mainbox {
+    background-color: @background;
+
+    padding: 8px;
+    spacing: 6px;
+
+    children: [
+        inputbar,
+        listview
+    ];
+}
+
+inputbar {
+    background-color: @background-alt;
+
+    padding: 6px 8px;
+    spacing: 6px;
+
+    border: 1px;
+    border-color: @border-color;
+    border-radius: 6px;
+
+    children: [
+        prompt,
+        entry
+    ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @foreground;
+
+    str: "drun";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @foreground;
+
+    placeholder: "Type to filter";
+    placeholder-color: @foreground-muted;
 }
 
 listview {
-    lines: 8;
-    spacing: 6px;
+    background-color: @background;
+
+    lines: 7;
+    spacing: 2px;
+
+    scrollbar: false;
+    fixed-height: false;
+
+    border: 0px;
 }
 
 element {
-    padding: 8px;
-    border-radius: 6px;
+    background-color: @background;
+    text-color: @foreground;
+
+    padding: 6px 8px;
+    spacing: 8px;
+
+    border: 0px;
+    border-radius: 5px;
 }
 
-element selected {
+element normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element alternate.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element selected.normal {
     background-color: @selected-background;
     text-color: @selected-foreground;
+}
+
+element-icon {
+    size: 18px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
 }
