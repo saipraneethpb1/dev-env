@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 if [[ -x ".ready-tmux" ]]; then
     ./.ready-tmux
-elif [[ -x "~/.ready-tmux" ]]; then
-    ~/.ready-tmux
+elif [[ -x "$HOME/.ready-tmux" ]]; then
+    "$HOME/.ready-tmux"
 fi
+
 clear
